@@ -6557,15 +6557,16 @@ const taskFunctionMap = {
 
 <style scoped>
 .batch-daily-tasks {
-  padding: 20px;
+  padding: var(--spacing-lg);
   height: 100vh;
   box-sizing: border-box;
   overflow: hidden;
+  background: var(--bg-secondary);
 }
 
 .main-layout {
   display: flex;
-  gap: 20px;
+  gap: var(--spacing-lg);
   height: 100%;
   overflow: hidden;
 }
@@ -6578,23 +6579,41 @@ const taskFunctionMap = {
 }
 
 .right-column {
-  width: 400px;
+  width: 420px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  height: 700px;
+  height: 100%;
 }
 
 .page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background: var(--bg-primary);
+  border-radius: var(--border-radius-large);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-light);
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.page-header h2 {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
 }
 
 .token-item {
   display: flex;
   align-items: center;
+}
+
+.token-list-card {
+  margin-bottom: var(--spacing-lg);
 }
 
 .log-card {
@@ -6603,55 +6622,66 @@ const taskFunctionMap = {
   flex-direction: column;
 }
 
+.log-card :deep(.arco-card-body) {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
 .custom-card-header {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--spacing-sm);
 }
 
 .card-title {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: var(--text-primary);
 }
 
 .log-header-controls {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--spacing-sm);
   justify-content: flex-end;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 /* Cron Parser Styles */
 .cron-parser {
-  margin-top: 12px;
-  padding: 12px;
-  background-color: var(--bg-tertiary);
-  border-radius: 8px;
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--bg-secondary);
+  border-radius: var(--border-radius-medium);
+  border: 1px solid var(--border-light);
 }
 
 .cron-validation {
-  margin-bottom: 12px;
-  padding: 8px;
-  border-radius: 4px;
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius-small);
 }
 
 .cron-validation.success {
-  background-color: rgba(24, 160, 88, 0.12);
+  background-color: var(--success-color-light);
+  color: var(--success-color);
 }
 
 .cron-validation.error {
-  background-color: rgba(235, 87, 87, 0.12);
+  background-color: var(--error-color-light);
+  color: var(--error-color);
 }
 
 .cron-next-runs h4 {
-  margin: 0 0 8px 0;
-  font-size: 14px;
-  font-weight: 600;
+  margin: 0 0 var(--spacing-sm) 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
   color: var(--text-primary);
 }
 
@@ -6662,64 +6692,54 @@ const taskFunctionMap = {
 }
 
 .cron-next-runs li {
-  padding: 6px 0;
-  font-size: 13px;
+  padding: var(--spacing-xs) 0;
+  font-size: var(--font-size-xs);
   color: var(--text-secondary);
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-light);
 }
 
 .cron-next-runs li:last-child {
   border-bottom: none;
 }
 
-.log-card :deep(.n-card__content) {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.log-header-controls {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
 .log-container {
   flex: 1;
   overflow-y: auto;
-  background: #f5f5f5;
-  padding: 10px;
-  border-radius: 4px;
-  margin-top: 10px;
-  font-family: monospace;
+  background: var(--bg-secondary);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-medium);
+  margin-top: var(--spacing-md);
+  font-family: 'SF Mono', Monaco, monospace;
   min-height: 200px;
+  border: 1px solid var(--border-light);
 }
 
 .log-item {
   margin-bottom: 4px;
   font-size: 12px;
+  line-height: 1.5;
 }
 
 .log-item.error {
-  color: #d03050;
+  color: var(--error-color);
 }
 
 .log-item.success {
-  color: #18a058;
+  color: var(--success-color);
 }
 
 .log-item.warning {
-  color: #f0a020;
+  color: var(--warning-color);
 }
 
 .log-item.info {
-  color: #333;
+  color: var(--text-primary);
 }
 
 .time {
-  color: #999;
-  margin-right: 8px;
+  color: var(--text-tertiary);
+  margin-right: var(--spacing-sm);
+  font-size: 11px;
 }
 
 .token-row {
@@ -6730,35 +6750,40 @@ const taskFunctionMap = {
 }
 
 /* Settings Modal Styles */
+.settings-content {
+  padding: var(--spacing-md);
+}
+
 .settings-grid {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--spacing-md);
 }
 
 .setting-item {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--spacing-xs);
 }
 
 .setting-label {
-  font-size: 14px;
-  color: #666;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-medium);
 }
 
 .setting-switches {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--spacing-sm);
 }
 
 .switch-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .switch-row:last-child {
@@ -6766,8 +6791,83 @@ const taskFunctionMap = {
 }
 
 .switch-label {
-  font-size: 14px;
-  color: #666;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.modal-actions {
+  margin-top: var(--spacing-lg);
+  text-align: right;
+}
+
+/* Group Selection */
+.group-selection-section {
+  padding: var(--spacing-md);
+  background-color: var(--bg-secondary);
+  border-radius: var(--border-radius-medium);
+  border: 1px solid var(--border-light);
+  margin-bottom: var(--spacing-md);
+}
+
+.group-tag {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-medium);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  user-select: none;
+  text-align: center;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.group-tag:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-light);
+}
+
+.group-tag-selected {
+  color: white !important;
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Recipient Info */
+.recipient-info {
+  transition: all var(--transition-normal);
+}
+
+.recipient-info:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Avatar */
+.avatar-container {
+  transition: all var(--transition-normal);
+}
+
+.avatar-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(22, 93, 255, 0.3);
+}
+
+/* Spin Animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Sort Buttons */
+.sort-buttons {
+  margin-bottom: var(--spacing-md);
+}
+
+/* Tab Content Buttons */
+:deep(.arco-tabs-content) {
+  padding-top: var(--spacing-md);
 }
 
 /* Responsive Design */
@@ -6798,6 +6898,7 @@ const taskFunctionMap = {
     width: 100%;
     height: auto;
     flex-shrink: 0;
+    min-height: 400px;
   }
 
   .log-container {
@@ -6808,7 +6909,7 @@ const taskFunctionMap = {
 
 @media (max-width: 768px) {
   .batch-daily-tasks {
-    padding: 12px;
+    padding: var(--spacing-md);
     height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
@@ -6835,20 +6936,21 @@ const taskFunctionMap = {
 
   .page-header {
     flex-direction: column;
-    gap: 12px;
+    gap: var(--spacing-sm);
     align-items: stretch;
   }
 
   .page-header .actions {
     display: flex;
-    gap: 8px;
+    gap: var(--spacing-xs);
+    flex-wrap: wrap;
   }
 
   .log-card {
     height: auto !important;
   }
 
-  .log-card :deep(.n-card__content) {
+  .log-card :deep(.arco-card-body) {
     flex: none !important;
     overflow: visible !important;
     display: block !important;
@@ -6863,71 +6965,19 @@ const taskFunctionMap = {
   .log-header-controls {
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
+    gap: var(--spacing-xs);
   }
+}
 
-  /* 批量功法残卷赠送样式 */
-  .recipient-info:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-  }
-
-  /* 头像悬停效果 */
-  .avatar-container:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.3);
-  }
-
-  /* 加载动画 */
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-  /* Token分组管理样式 */
-  .group-selection-section {
-    padding: 12px;
-    background-color: #f5f7fa;
-    border-radius: 8px;
-    border: 1px solid #e5e7eb;
-  }
-
-  .group-tag {
-    padding: 8px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    user-select: none;
+@media (max-width: 600px) {
+  .recipient-info {
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    font-weight: 500;
   }
 
-  .group-tag:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  .group-tag-selected {
-    color: white;
-    font-weight: 600;
-  }
-
-  /* 响应式设计 */
-  @media (max-width: 600px) {
-    .recipient-info {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .avatar-container {
-      margin-bottom: 12px;
-    }
+  .avatar-container {
+    margin-bottom: var(--spacing-md);
   }
 }
 </style>

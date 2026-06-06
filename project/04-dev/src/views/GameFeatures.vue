@@ -5,11 +5,8 @@
         <div class="header-content">
           <div class="header-left">
             <h1 class="page-title">游戏功能</h1>
-            <p class="page-subtitle">
-              {{ tokenStore.selectedToken?.name || "未选择Token" }}
-            </p>
+            <p class="page-subtitle">{{ tokenStore.selectedToken?.name || "未选择Token" }}</p>
           </div>
-
           <div class="header-actions">
             <div class="connection-status" :class="connectionStatus">
               <CloudDone />
@@ -24,25 +21,10 @@
 
     <div class="features-grid-section">
       <div class="container">
-        <div
-          class="game-status-container"
-          :class="{
-            'full-grid': activeSection === 'fightPvp',
-            'full-page-mode':
-              activeSection === 'saltFieldGroup' ||
-              activeSection === 'peachGroup' ||
-              activeSection === 'rankGroup',
-            'club-mode': activeSection === 'club',
-          }"
-        >
+        <div class="game-status-container" :class="containerClass">
           <IdentityCard embedded />
 
-          <a-tabs
-            class="section-tabs"
-            v-model:active-key="activeSection"
-            type="line"
-            size="small"
-          >
+          <a-tabs class="section-tabs" v-model:active-key="activeSection" type="line" size="small">
             <a-tab-pane key="daily" title="日常" />
             <a-tab-pane key="club" title="俱乐部" />
             <a-tab-pane key="activity" title="活动" />
@@ -81,11 +63,7 @@
 
           <div class="salt-field-group" v-if="activeSection === 'saltFieldGroup'">
             <div class="sub-nav">
-              <a-tabs
-                v-model:active-key="saltFieldTab"
-                type="rounded"
-                size="small"
-              >
+              <a-tabs v-model:active-key="saltFieldTab" type="rounded" size="small">
                 <a-tab-pane key="warrank" title="盐场" />
                 <a-tab-pane key="weekBattle" title="本周盐场战绩" />
                 <a-tab-pane key="monthBattle" title="本月盐场战绩" />
@@ -93,56 +71,27 @@
                 <a-tab-pane key="legionWarStatistics" title="盐场战况" />
               </a-tabs>
             </div>
-
-            <div class="warrank-full-container" v-if="saltFieldTab === 'weekBattle'">
-              <ClubBattleRecords />
-            </div>
-
-            <div class="warrank-full-container" v-if="saltFieldTab === 'warrank'">
-              <ClubWarrank />
-            </div>
-
-            <div class="warrank-full-container" v-if="saltFieldTab === 'monthBattle'">
-              <ClubMonthBattleRecords />
-            </div>
-
-            <div class="warrank-full-container" v-if="saltFieldTab === 'legionWarMap'">
-              <LegionWarMap />
-            </div>
-
-            <div class="warrank-full-container" v-if="saltFieldTab === 'legionWarStatistics'">
-              <LegionWarStatistics />
-            </div>
+            <div class="warrank-full-container" v-if="saltFieldTab === 'weekBattle'"><ClubBattleRecords /></div>
+            <div class="warrank-full-container" v-if="saltFieldTab === 'warrank'"><ClubWarrank /></div>
+            <div class="warrank-full-container" v-if="saltFieldTab === 'monthBattle'"><ClubMonthBattleRecords /></div>
+            <div class="warrank-full-container" v-if="saltFieldTab === 'legionWarMap'"><LegionWarMap /></div>
+            <div class="warrank-full-container" v-if="saltFieldTab === 'legionWarStatistics'"><LegionWarStatistics /></div>
           </div>
 
           <div class="peach-group" v-if="activeSection === 'peachGroup'">
             <div class="sub-nav">
-              <a-tabs
-                v-model:active-key="peachTab"
-                type="rounded"
-                size="small"
-              >
+              <a-tabs v-model:active-key="peachTab" type="rounded" size="small">
                 <a-tab-pane key="peach" title="蟠桃园信息" />
                 <a-tab-pane key="peachBattle" title="蟠桃园战绩" />
               </a-tabs>
             </div>
-
-            <div class="warrank-full-container" v-if="peachTab === 'peachBattle'">
-              <PeachBattleRecords />
-            </div>
-
-            <div class="warrank-full-container" v-if="peachTab === 'peach'">
-              <PeachInfo />
-            </div>
+            <div class="warrank-full-container" v-if="peachTab === 'peachBattle'"><PeachBattleRecords /></div>
+            <div class="warrank-full-container" v-if="peachTab === 'peach'"><PeachInfo /></div>
           </div>
 
           <div class="rank-group" v-if="activeSection === 'rankGroup'">
             <div class="sub-nav">
-              <a-tabs
-                v-model:active-key="rankTab"
-                type="rounded"
-                size="small"
-              >
+              <a-tabs v-model:active-key="rankTab" type="rounded" size="small">
                 <a-tab-pane key="serverrank" title="区服榜" />
                 <a-tab-pane key="toprank" title="巅峰榜" />
                 <a-tab-pane key="topclubrank" title="俱乐部榜" />
@@ -150,26 +99,11 @@
                 <a-tab-pane key="greatRouteRank" title="伟大航路积分榜" />
               </a-tabs>
             </div>
-
-            <div class="warrank-full-container" v-if="rankTab === 'serverrank'">
-              <ServerRankList />
-            </div>
-
-            <div class="warrank-full-container" v-if="rankTab === 'toprank'">
-              <TopRankList />
-            </div>
-
-            <div class="warrank-full-container" v-if="rankTab === 'topclubrank'">
-              <TopClubList />
-            </div>
-
-            <div class="warrank-full-container" v-if="rankTab === 'goldclubrank'">
-              <GoldClubList />
-            </div>
-
-            <div class="warrank-full-container" v-if="rankTab === 'greatRouteRank'">
-              <GreatRouteRankList />
-            </div>
+            <div class="warrank-full-container" v-if="rankTab === 'serverrank'"><ServerRankList /></div>
+            <div class="warrank-full-container" v-if="rankTab === 'toprank'"><TopRankList /></div>
+            <div class="warrank-full-container" v-if="rankTab === 'topclubrank'"><TopClubList /></div>
+            <div class="warrank-full-container" v-if="rankTab === 'goldclubrank'"><GoldClubList /></div>
+            <div class="warrank-full-container" v-if="rankTab === 'greatRouteRank'"><GreatRouteRankList /></div>
           </div>
 
           <FightPvp v-if="activeSection === 'fightPvp'" />
@@ -182,9 +116,7 @@
         <div class="ws-status-card">
           <div class="status-header">
             <h3>连接状态</h3>
-            <a-button text @click="toggleConnection">
-              {{ isConnected ? "断开连接" : "重新连接" }}
-            </a-button>
+            <a-button text @click="toggleConnection">{{ isConnected ? "断开连接" : "重新连接" }}</a-button>
           </div>
           <div class="status-content">
             <div class="status-item">
@@ -256,167 +188,91 @@ const tokenStore = useTokenStore();
 
 const showFeedback = ref(true);
 const lastActivity = ref(null);
-
 const showToolsTab = ref(true);
-
 const activeSection = ref("daily");
 const saltFieldTab = ref("warrank");
 const peachTab = ref("peach");
 const rankTab = ref("serverrank");
 
-const legionMatch = ref({ isRegistered: false });
-
-const bottleHelperStatus = ref({
-  isRunning: false,
-  remainingTime: 0,
-  stopTime: 0,
-});
-
-const hangUpStatus = ref({
-  isActive: false,
-  remainingTime: 0,
-  elapsedTime: 0,
-  lastTime: 0,
-  hangUpTime: 0,
-  isExtending: false,
-  isClaiming: false,
-});
-
-const signInStatus = ref({ isSignedIn: false, clubName: "" });
+const containerClass = computed(() => ({
+  'full-grid': activeSection.value === 'fightPvp',
+  'full-page-mode': ['saltFieldGroup', 'peachGroup', 'rankGroup'].includes(activeSection.value),
+  'club-mode': activeSection.value === 'club',
+}));
 
 const connectionStatus = computed(() => {
   if (!tokenStore.selectedToken) return "disconnected";
-  const status = tokenStore.getWebSocketStatus(tokenStore.selectedToken.id);
-  return status === "connected" ? "connected" : "disconnected";
+  return tokenStore.getWebSocketStatus(tokenStore.selectedToken.id) === "connected" ? "connected" : "disconnected";
 });
 
 const connectionStatusText = computed(() => {
   if (!tokenStore.selectedToken) return "未选择Token";
-  const status = tokenStore.getWebSocketStatus(tokenStore.selectedToken.id);
-  return status === "connected" ? "已连接" : "未连接";
+  return tokenStore.getWebSocketStatus(tokenStore.selectedToken.id) === "connected" ? "已连接" : "未连接";
 });
 
-const connectionClass = computed(() => {
-  return connectionStatus.value === "connected"
-    ? "status-connected"
-    : "status-disconnected";
-});
+const connectionClass = computed(() => connectionStatus.value === "connected" ? "status-connected" : "status-disconnected");
+const isConnected = computed(() => connectionStatus.value === "connected");
 
-const isConnected = computed(() => {
-  return connectionStatus.value === "connected";
-});
-
-const roleInfo = computed(() => {
-  return tokenStore.gameData?.roleInfo || null;
-});
+const roleInfo = computed(() => tokenStore.gameData?.roleInfo || null);
 
 const canChallengeBoss = computed(() => {
-  const tower = roleInfo.value?.role?.tower;
-  const towerId = tower?.id;
+  const towerId = roleInfo.value?.role?.tower?.id;
   if (towerId == null) return true;
   return !(Math.floor(towerId / 10) + 1 > 450);
 });
 
+let timerInterval = null;
+
 const updateTimers = () => {
   if (!roleInfo.value) return;
   const role = roleInfo.value.role;
+  const now = Date.now() / 1000;
 
   if (role.bottleHelpers) {
-    const now = Date.now() / 1000;
     bottleHelperStatus.value.stopTime = role.bottleHelpers.helperStopTime;
     bottleHelperStatus.value.isRunning = role.bottleHelpers.helperStopTime > now;
-    bottleHelperStatus.value.remainingTime = Math.max(
-      0,
-      Math.floor(role.bottleHelpers.helperStopTime - now),
-    );
+    bottleHelperStatus.value.remainingTime = Math.max(0, Math.floor(role.bottleHelpers.helperStopTime - now));
   }
 
   if (role.hangUp) {
-    const now = Date.now() / 1000;
     hangUpStatus.value.lastTime = role.hangUp.lastTime;
     hangUpStatus.value.hangUpTime = role.hangUp.hangUpTime;
     const elapsed = now - hangUpStatus.value.lastTime;
     if (elapsed <= hangUpStatus.value.hangUpTime) {
-      hangUpStatus.value.remainingTime = Math.floor(
-        hangUpStatus.value.hangUpTime - elapsed,
-      );
+      hangUpStatus.value.remainingTime = Math.floor(hangUpStatus.value.hangUpTime - elapsed);
       hangUpStatus.value.isActive = true;
     } else {
       hangUpStatus.value.remainingTime = 0;
       hangUpStatus.value.isActive = false;
     }
-    hangUpStatus.value.elapsedTime = Math.floor(
-      hangUpStatus.value.hangUpTime - hangUpStatus.value.remainingTime,
-    );
-  }
-
-  if (role.statistics) {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const dayStart = today.getTime() / 1000;
-    legionMatch.value.isRegistered =
-      Number(role.statistics["last:legion:match:sign:up:time"]) > dayStart;
-  }
-
-  if (role.statisticsTime) {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const dayStart = today.getTime() / 1000;
-    signInStatus.value.isSignedIn =
-      role.statisticsTime["legion:sign:in"] > dayStart;
+    hangUpStatus.value.elapsedTime = Math.floor(hangUpStatus.value.hangUpTime - hangUpStatus.value.remainingTime);
   }
 };
 
-let timerInterval = null;
 const startTimer = () => {
   if (timerInterval) clearInterval(timerInterval);
   timerInterval = setInterval(() => {
     if (bottleHelperStatus.value.isRunning && bottleHelperStatus.value.remainingTime > 0) {
-      bottleHelperStatus.value.remainingTime = Math.max(
-        0,
-        bottleHelperStatus.value.remainingTime - 1,
-      );
-      if (bottleHelperStatus.value.remainingTime <= 0) {
-        bottleHelperStatus.value.isRunning = false;
-      }
+      bottleHelperStatus.value.remainingTime = Math.max(0, bottleHelperStatus.value.remainingTime - 1);
+      if (bottleHelperStatus.value.remainingTime <= 0) bottleHelperStatus.value.isRunning = false;
     }
     if (hangUpStatus.value.isActive && hangUpStatus.value.remainingTime > 0) {
-      hangUpStatus.value.remainingTime = Math.max(
-        0,
-        hangUpStatus.value.remainingTime - 1,
-      );
-      hangUpStatus.value.elapsedTime = hangUpStatus.value.elapsedTime + 1;
-      if (hangUpStatus.value.remainingTime <= 0) {
-        hangUpStatus.value.isActive = false;
-      }
+      hangUpStatus.value.remainingTime = Math.max(0, hangUpStatus.value.remainingTime - 1);
+      hangUpStatus.value.elapsedTime++;
+      if (hangUpStatus.value.remainingTime <= 0) hangUpStatus.value.isActive = false;
     }
   }, 1000);
 };
 
-watch(
-  roleInfo,
-  (newValue) => {
-    if (newValue) {
-      updateTimers();
-    }
-  },
-  { deep: true, immediate: true },
-);
+watch(roleInfo, (newValue) => { if (newValue) updateTimers(); }, { deep: true, immediate: true });
 
 const hasInitialized = ref(false);
-watch(
-  () =>
-    tokenStore.selectedToken
-      ? tokenStore.getWebSocketStatus(tokenStore.selectedToken.id)
-      : "disconnected",
-  (status) => {
-    if (status === "connected" && !hasInitialized.value && tokenStore.selectedToken) {
-      hasInitialized.value = true;
-      const tokenId = tokenStore.selectedToken.id;
-      tokenStore.sendMessage(tokenId, "legion_getinfo");
-    }
-  },
-);
+watch(() => tokenStore.selectedToken ? tokenStore.getWebSocketStatus(tokenStore.selectedToken.id) : "disconnected", (status) => {
+  if (status === "connected" && !hasInitialized.value && tokenStore.selectedToken) {
+    hasInitialized.value = true;
+    tokenStore.sendMessage(tokenStore.selectedToken.id, "legion_getinfo");
+  }
+});
 
 const connectWebSocket = () => {
   if (!tokenStore.selectedToken) {
@@ -424,17 +280,11 @@ const connectWebSocket = () => {
     router.push("/tokens");
     return;
   }
-
   try {
-    const tokenId = tokenStore.selectedToken.id;
-    const token = tokenStore.selectedToken.token;
-
-    tokenStore.createWebSocketConnection(tokenId, token);
+    tokenStore.createWebSocketConnection(tokenStore.selectedToken.id, tokenStore.selectedToken.token);
     message.info("正在建立 WebSocket 连接...");
-
     setTimeout(async () => {
-      const status = tokenStore.getWebSocketStatus(tokenId);
-      if (status === "connected") {
+      if (tokenStore.getWebSocketStatus(tokenStore.selectedToken.id) === "connected") {
         message.success("WebSocket 连接成功");
         await initializeGameData();
       }
@@ -447,99 +297,73 @@ const connectWebSocket = () => {
 
 const disconnectWebSocket = () => {
   if (tokenStore.selectedToken) {
-    const tokenId = tokenStore.selectedToken.id;
-    tokenStore.closeWebSocketConnection(tokenId);
+    tokenStore.closeWebSocketConnection(tokenStore.selectedToken.id);
     message.info("WebSocket连接已断开");
   }
 };
 
 const toggleConnection = () => {
-  if (connectionStatus.value === "connected") {
-    disconnectWebSocket();
-  } else {
-    connectWebSocket();
-  }
+  if (connectionStatus.value === "connected") disconnectWebSocket();
+  else connectWebSocket();
 };
 
 const initializeGameData = async () => {
   if (!tokenStore.selectedToken) return;
-
   try {
     const tokenId = tokenStore.selectedToken.id;
     tokenStore.sendMessage(tokenId, "role_getroleinfo");
     tokenStore.sendMessage(tokenId, "tower_getinfo");
     tokenStore.sendMessage(tokenId, "evotower_getinfo");
     tokenStore.sendMessage(tokenId, "presetteam_getinfo");
-    const res = await tokenStore.sendMessageWithPromise(
-      tokenId,
-      "fight_startlevel",
-    );
+    const res = await tokenStore.sendMessageWithPromise(tokenId, "fight_startlevel");
     tokenStore.setBattleVersion(res?.battleData?.version);
-  } catch (error) {
-  }
+  } catch (error) {}
 };
 
 onMounted(() => {
   updateTimers();
   startTimer();
   if (tokenStore.selectedToken) {
-    const status = tokenStore.getWebSocketStatus(tokenStore.selectedToken.id);
-    if (status !== "connected") {
+    if (tokenStore.getWebSocketStatus(tokenStore.selectedToken.id) !== "connected") {
       connectWebSocket();
     } else {
       initializeGameData();
-      const tokenId = tokenStore.selectedToken.id;
-      tokenStore.sendMessage(tokenId, "legion_getinfo");
+      tokenStore.sendMessage(tokenStore.selectedToken.id, "legion_getinfo");
       hasInitialized.value = true;
     }
   }
 });
 
-watch(
-  () => {
-    if (!tokenStore.selectedToken)
-      return { status: "disconnected", lastError: null };
-    const conn = tokenStore.wsConnections[tokenStore.selectedToken.id];
-    return { status: conn?.status, lastError: conn?.lastError };
-  },
-  (cur) => {
-    if (!cur) return;
-    if (cur.status === "error" && cur.lastError) {
-      const err = String(cur.lastError.error || "").toLowerCase();
-      if (err.includes("token") && err.includes("expired")) {
-        const importMethod = tokenStore.selectedToken?.importMethod;
-        if (
-          importMethod === "url" ||
-          importMethod === "bin" ||
-          importMethod === "wxQrcode"
-        ) {
-          message.warning("Token已过期，正在尝试自动刷新...");
-          return;
-        }
-        message.error("当前 Token 已过期，请重新导入后再试");
-        router.push("/tokens");
+watch(() => {
+  if (!tokenStore.selectedToken) return { status: "disconnected", lastError: null };
+  const conn = tokenStore.wsConnections[tokenStore.selectedToken.id];
+  return { status: conn?.status, lastError: conn?.lastError };
+}, (cur) => {
+  if (!cur) return;
+  if (cur.status === "error" && cur.lastError) {
+    const err = String(cur.lastError.error || "").toLowerCase();
+    if (err.includes("token") && err.includes("expired")) {
+      const importMethod = tokenStore.selectedToken?.importMethod;
+      if (["url", "bin", "wxQrcode"].includes(importMethod)) {
+        message.warning("Token已过期，正在尝试自动刷新...");
+        return;
       }
+      message.error("当前 Token 已过期，请重新导入后再试");
+      router.push("/tokens");
     }
-  },
-  { deep: true },
-);
+  }
+}, { deep: true });
 
 onUnmounted(() => {
-  if (timerInterval) {
-    clearInterval(timerInterval);
-  }
+  if (timerInterval) clearInterval(timerInterval);
 });
 </script>
 
 <style scoped lang="scss">
 .game-features-page {
   min-height: 100dvh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: var(--bg-secondary);
   padding-bottom: calc(var(--spacing-md) + env(safe-area-inset-bottom));
-}
-
-[arco-theme="dark"] .game-features-page {
-  background: linear-gradient(135deg, #0f172a 0%, #1f2937 100%);
 }
 
 .page-header {
@@ -587,12 +411,12 @@ onUnmounted(() => {
   font-weight: var(--font-weight-medium);
 
   &.connected {
-    background: rgba(24, 160, 88, 0.1);
+    background: var(--success-color-light);
     color: var(--success-color);
   }
 
   &.disconnected {
-    background: rgba(208, 48, 80, 0.1);
+    background: var(--error-color-light);
     color: var(--error-color);
   }
 }
@@ -675,10 +499,13 @@ onUnmounted(() => {
 }
 
 .sub-nav {
-  padding: 8px;
-  background: var(--color-bg-2);
+  padding: var(--spacing-sm);
+  background: var(--bg-primary);
+  border-radius: var(--border-radius-large);
+  margin-bottom: var(--spacing-md);
   display: flex;
   justify-content: center;
+  box-shadow: var(--shadow-sm);
 }
 
 .warrank-full-container {
@@ -687,6 +514,9 @@ onUnmounted(() => {
   height: calc(100vh - 200px);
   min-height: 600px;
   overflow: hidden;
+  background: var(--bg-primary);
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--shadow-light);
 
   @media (max-width: 768px) {
     height: calc(100vh - 180px);
@@ -702,7 +532,8 @@ onUnmounted(() => {
   background: var(--bg-primary);
   border-radius: var(--border-radius-large);
   padding: var(--spacing-lg);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-light);
 }
 
 .status-header {
@@ -755,12 +586,6 @@ onUnmounted(() => {
   color: var(--error-color);
 }
 
-@media (max-width: 1024px) {
-  .features-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  }
-}
-
 @media (max-width: 768px) {
   .container {
     padding: 0 var(--spacing-md);
@@ -768,7 +593,6 @@ onUnmounted(() => {
 
   .page-header {
     padding: var(--spacing-md) 0;
-    margin-bottom: var(--spacing-md);
 
     .header-content {
       flex-direction: column;

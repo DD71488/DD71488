@@ -680,23 +680,18 @@ watch(
 <style scoped lang="scss">
 .daily-tasks-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-}
-
-/* 深色主题下背景 */
-[arco-theme="dark"] .daily-tasks-page {
-  background: linear-gradient(135deg, #0f172a 0%, #1f2937 100%);
+  background: var(--bg-secondary);
 }
 
 .page-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
   padding: var(--spacing-xl) 0;
   color: white;
 }
 
 /* 深色主题下头部渐变 */
 [arco-theme="dark"] .page-header {
-  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  background: linear-gradient(135deg, #0e42d2 0%, #531dab 100%);
 }
 
 .header-content {

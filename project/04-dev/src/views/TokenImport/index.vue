@@ -1621,13 +1621,13 @@ onUnmounted(() => {
 <style scoped lang="scss">
 .token-import-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--bg-secondary);
   padding: var(--spacing-xl) 0;
 }
 
 /* 深色主题下的页面背景 */
 [arco-theme="dark"] .token-import-page {
-  background: linear-gradient(135deg, #0f172a 0%, #1f2937 100%);
+  background: var(--bg-secondary);
 }
 
 .container {
@@ -1646,8 +1646,7 @@ onUnmounted(() => {
   flex-direction: column;
   align-items: center;
   gap: var(--spacing-md);
-  color: white;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  color: var(--text-primary);
 }
 
 .header-top {
@@ -1678,15 +1677,13 @@ onUnmounted(() => {
   font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-bold);
   margin: 0;
-  color: #ffffff;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  color: var(--text-primary);
 }
 
 .header-content p {
   font-size: var(--font-size-lg);
   margin: 0;
-  color: rgba(255, 255, 255, 0.95);
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  color: var(--text-secondary);
 }
 
 .import-section {
@@ -1907,20 +1904,22 @@ onUnmounted(() => {
 }
 
 .token-card {
-  border: 2px solid var(--border-light);
+  border: 1px solid var(--border-light);
   border-radius: var(--border-radius-large);
   padding: var(--spacing-lg);
   cursor: pointer;
   transition: all var(--transition-normal);
+  background: var(--bg-primary);
 
   &:hover {
     box-shadow: var(--shadow-medium);
     transform: translateY(-2px);
+    border-color: var(--border-primary);
   }
 
   &.active {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 0 3px var(--primary-color-light);
   }
 
   &.connected {
@@ -2285,6 +2284,7 @@ onUnmounted(() => {
 }
 
 [arco-theme="dark"] .token-card {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--card-bg);
+  border-color: var(--card-border);
 }
 </style>
