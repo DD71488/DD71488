@@ -97,9 +97,7 @@
             </a-button>
             <a-button @click="openBatchSettings" type="default" size="medium">
               <template #icon>
-                <>
-                  <Settings />
-                
+                <Settings />
               </template>
               设置
             </a-button>
@@ -280,9 +278,7 @@
                       @click.stop="openSettings(token)"
                     >
                       <template #icon>
-                        <>
-                          <Settings />
-                        
+                        <Settings />
                       </template>
                     </a-button>
                   </div>

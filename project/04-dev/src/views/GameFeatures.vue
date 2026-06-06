@@ -12,9 +12,7 @@
 
           <div class="header-actions">
             <div class="connection-status" :class="connectionStatus">
-              <>
-                <CloudDone />
-              
+              <CloudDone />
               <span>{{ connectionStatusText }}</span>
             </div>
           </div>
