@@ -115,7 +115,7 @@ APK528 = C 的 Capacitor 打包版本，与 ena.pages.dev / xiaohuaxyzw.top 字�
 
 APK528 采用 **Naive UI JS + Arco Design CSS 混合架构**：JS 层使用 Naive UI 组件，CSS 层加载完整 Arco Design 样式库。本项目统一到纯 Arco Design。迁移策略：逐组件替换，每替换一个组件后 `npm run build` 验证。
 
-⚠️ 当前04-dev/main.js缺少Arco CSS导入（阻断性bug），需添加 `import '@arco-design/web-vue/dist/arco.css'`
+✅ 04-dev/main.js 已正确导入 Arco CSS 并注册 ArcoVue 插件（2026-06-05 修复）
 
 ### 2. 基线版本：GitHub 最新 main 分支
 

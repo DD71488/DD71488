@@ -13,7 +13,7 @@
 |------|---------|-------------|
 | `<n-` 残留 | "0匹配，已全部清除" | ✅ **确认**：src/ 中 grep 0 匹配 |
 | naive-ui 依赖 | "已移除" | ✅ **确认**：04-dev/package.json 无 naive-ui |
-| main.js Arco CSS | "阻断性bug" | ✅ **确认**：缺少 `import arco.css` 和 `app.use(ArcoVue)` |
+| main.js Arco CSS | ~~"阻断性bug"~~ | ✅ **已修复**（2026-06-05）：`main.js` 已导入 `arco.css` 并注册 `ArcoVue` |
 | dailyTaskRunner 重构 | "1235行，已完成" | ⚠️ **部分完成**：04-dev 1235行 vs 00-baseline 736行（+499行），diff 1838行，已新增常量/错误映射/辅助函数，但 build*Tasks 方法是否完整需验证 |
 | BatchDailyTasks | "6952行，14tabs已完成" | ⚠️ **仅UI迁移**：6952行 vs 00-baseline 6255行（+697行），diff 2378行，差异主要是 `<n-*> → <a-*>` 替换，APK528 新增逻辑是否完整移植需验证 |
 | Profile | "1167行，已完成" | ⚠️ **部分完成**：1167行 vs 00-baseline 415行（+752行），diff 966行，TokenManager 内联已做，但 `handleMenuSelect` 缺5个break（安全风险） |
@@ -37,7 +37,7 @@
 
 | # | 错漏 | 影响 | 严重程度 |
 |---|------|------|---------|
-| 1 | **main.js 缺 Arco CSS + ArcoVue 注册** | 所有 Arco 组件无样式，命令式 API 不可用 | 🔴 阻断 |
+| ~~1~~ | ~~**main.js 缺 Arco CSS + ArcoVue 注册**~~ | ~~所有 Arco 组件无样式，命令式 API 不可用~~ | ~~🔴 阻断~~ → ✅ **已修复**（2026-06-05） |
 | 2 | **crossPlatform.js 是空壳** | 下载功能、平台判断不可用 | 🔴 高 |
 | 3 | **Profile.vue handleMenuSelect 缺5个break** | switch 穿透导致错误行为 | 🔴 高 |
 | 4 | **GameFeatures.vue 8项死代码未清理** | 代码冗余、潜在运行时错误 | 🟡 中 |
@@ -247,7 +247,7 @@ Phase 5 (部署) ── 依赖 Phase 3+4
 |------|------|------|
 | UI 迁移完成度 | ✅ 已验证 | `<n-` 残留 0 匹配，`<a-` 标签分布合理 |
 | 核心文件一致性 | ✅ 已验证 | tokenStore/xyzwWebSocket/bonProtocol/router 与基线完全一致 |
-| 阻断性 bug | ✅ 已验证 | main.js 缺 Arco CSS + ArcoVue 注册 |
+| ~~阻断性 bug~~ | ✅ ~~已验证~~ 已修复 | ~~main.js 缺 Arco CSS + ArcoVue 注册~~ |
 | 业务逻辑移植 | ⚠️ 部分验证 | dailyTaskRunner 有新增代码但完整性未逐函数验证 |
 | 组件迁移深度 | ⚠️ 部分验证 | 确认了 diff 行数但未逐组件验证业务逻辑 |
 
