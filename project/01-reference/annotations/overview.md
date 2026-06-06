@@ -160,7 +160,7 @@
 | `isTauri` / `isCapacitor` | 需移植(P2) | **已实现** | `crossPlatform.js` 中包含平台检测 | ✅完成 |
 | `WakeLockManager` | 未预估 | **已实现** | `04-dev/src/utils/wakeLock.js` 完整实现 | ✅完成 |
 | `answer.json` | 未预估 | **已补全** | 从 APK 复制到 `04-dev/public/answer.json` | ✅完成 |
-| `scheduler-worker.js` | 未预估 | **已创建** | 创建 `04-dev/public/scheduler-worker.js` | ✅完成 |
+| `scheduler-worker.js` | 未预估 | **无需创建** | APK 中该文件为 0 字节空白文件，非业务代码 | ✅无需处理 |
 | `startStarChallenge` / `loadStarChallengeData` | 需移植(P1) | **已实现** | `BatchDailyTasks.vue` 中包含星级挑战 | ✅完成 |
 | `saveCardStatus` / `restoreCardStatus` | 需移植(P1) | **已实现** | `BatchDailyTasks.vue` 中包含卡片状态持久化 | ✅完成 |
 | `isWeekResetNeeded` | 需移植(P2) | **已实现** | `BatchDailyTasks.vue` 中包含周重置检测 | ✅完成 |
@@ -206,3 +206,4 @@
 | 2026-05-28 | 初始版本，基于 4 个模块的映射表 |
 | 2026-06-03 | 添加"与 04-dev 实际状态对比"章节，更新工时预估，标记已完成任务（KIMI） |
 | 2026-06-05 | 纠正统计数字（198/51→214/57），添加分类争议说明（17项⚠️） |
+| 2026-06-06 | 修正 `scheduler-worker.js` 状态：APK 中为 0 字节空白文件，无需创建 |

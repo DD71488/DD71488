@@ -79,6 +79,7 @@ formatted-js 与 apk-raw 存在 **0.8%~2.5% 的真实代码差异**（非格式�
 | 2026-06-01 | 初始版本，总体结论 |
 | 2026-06-03 | 补充真实代码差异明细、差异文件统计、验证方法说明（KIMI） |
 | 2026-06-05 | 补充04-dev代码库验证、技术栈状态、独有增强、阻断性问题 |
+| 2026-06-06 | 更新04-dev技术栈状态：Naive→Arco迁移已完成，Arco CSS已导入，移除阻断性标记 |
 
 ---
 
@@ -90,9 +91,9 @@ formatted-js 与 apk-raw 存在 **0.8%~2.5% 的真实代码差异**（非格式�
 
 | 维度 | 04-dev 实际状态 | APK528 目标 | 差距 |
 |------|---------------|-----------|------|
-| UI框架 | Naive UI（主力）+ Arco Design（已安装，部分使用） | Arco Design | 需完成 Naive→Arco 全量迁移 |
-| Arco CSS | `ArcoResolver({ importStyle: false })` 按需但关闭样式导入 | 全量/按需导入 | **⚠️ 阻断性风险**：Arco 组件可能无样式 |
-| 主题切换 | `arco-theme=dark`（Arco官方方式） | `[data-theme=dark]` | 选择器不一致 |
+| UI框架 | Arco Design（纯） | Arco Design | ✅ 已完成 Naive→Arco 全量迁移 |
+| Arco CSS | `main.js` 全量导入 `arco.css` + `ArcoResolver({ importStyle: false })` | 全量/按需导入 | ✅ 样式正常导入 |
+| 主题切换 | `arco-theme=dark`（Arco官方方式） | `[data-theme=dark]` | ✅ 已统一为 Arco 方式 |
 | Token导入 | 5种（手动/URL/BIN/微信扫码/单BIN） | 6种（+批量BIN） | 缺1种 |
 | 游戏命令 | ~96个已注册 | ~116个 | 缺约20个 |
 | DailyTaskRunner | 单一 run() 方法 | 11个 build*Tasks 方法 | 架构差异大 |
@@ -112,6 +113,7 @@ formatted-js 与 apk-raw 存在 **0.8%~2.5% 的真实代码差异**（非格式�
 
 ### 04-dev 阻断性问题
 
-1. **Arco CSS 导入缺失**：`vite.config.js` 中 `ArcoResolver({ importStyle: false })` 关闭了样式自动导入，`main.js` 中也无全量 CSS 导入。需确认是否通过其他方式提供样式，否则所有 Arco 组件将无样式渲染。
-2. **GameFeatures.vue 模板语法错误**：第15-17行存在 `<>` 非法模板片段。
-3. **common.ts 未导入 ref/computed**：依赖 `unplugin-auto-import` 自动注入，需确认构建时是否正常。
+~~1. **Arco CSS 导入缺失**：`vite.config.js` 中 `ArcoResolver({ importStyle: false })` 关闭了样式自动导入，`main.js` 中也无全量 CSS 导入。需确认是否通过其他方式提供样式，否则所有 Arco 组件将无样式渲染。~~ ✅ 已修复（2026-06-05）：`main.js` 已导入 `arco.css` 并注册 `ArcoVue`
+
+2. **GameFeatures.vue 模板语法错误**：第15-17行存在 `<>` 非法模板片段。 ⚠️ 待确认（2026-06-06 未复现）
+3. **common.ts 未导入 ref/computed**：依赖 `unplugin-auto-import` 自动注入，需确认构建时是否正常。 ⚠️ 待验证
