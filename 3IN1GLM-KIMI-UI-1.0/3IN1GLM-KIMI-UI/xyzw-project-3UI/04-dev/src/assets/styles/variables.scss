@@ -1,0 +1,193 @@
+// 颜色变量 - 基于APK528风格，使用Arco Design色彩体系
+:root {
+  // 主题色 - Arco Design Blue系列
+  --primary-color: #165dff;
+  --primary-color-hover: #4080ff;
+  --primary-color-light: #e8f3ff;
+  --primary-color-dark: #0e42d2;
+
+  // 辅助色 - 紫罗兰渐变
+  --secondary-color: #722ed1;
+  --secondary-color-hover: #9254de;
+  --secondary-color-light: #f5e8ff;
+
+  // 功能色 - Arco Design标准
+  --success-color: #00b42a;
+  --success-color-hover: #23c343;
+  --success-color-light: #e8ffea;
+
+  --warning-color: #ff7d00;
+  --warning-color-hover: #ff9a2e;
+  --warning-color-light: #fff7e8;
+
+  --error-color: #f53f3f;
+  --error-color-hover: #ff6b6b;
+  --error-color-light: #ffe8e8;
+
+  --info-color: #165dff;
+  --info-color-hover: #4080ff;
+  --info-color-light: #e8f3ff;
+
+  // 中性色 - 灰度系统
+  --text-primary: #1d2129;
+  --text-secondary: #4e5969;
+  --text-tertiary: #86909c;
+  --text-disabled: #c9cdd4;
+  --text-white: #ffffff;
+
+  // 背景色
+  --bg-primary: #ffffff;
+  --bg-secondary: #f2f3f5;
+  --bg-tertiary: #e5e6eb;
+  --bg-quaternary: #c9cdd4;
+  --bg-overlay: rgba(0, 0, 0, 0.6);
+  --bg-mask: rgba(0, 0, 0, 0.4);
+
+  // 边框色
+  --border-light: #e5e6eb;
+  --border-medium: #c9cdd4;
+  --border-dark: #86909c;
+  --border-primary: #165dff;
+
+  // 阴影 - 更精致的层级阴影
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-large: 0 12px 32px rgba(0, 0, 0, 0.16);
+  --shadow-primary: 0 4px 12px rgba(22, 93, 255, 0.2);
+
+  // 圆角 - Arco Design标准
+  --border-radius-small: 2px;
+  --border-radius-medium: 4px;
+  --border-radius-large: 8px;
+  --border-radius-xl: 12px;
+  --border-radius-xxl: 16px;
+  --border-radius-full: 9999px;
+
+  // 间距 - 8px基准
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+
+  // 字体
+  --font-size-xs: 12px;
+  --font-size-sm: 13px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 32px;
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  // 行高
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  // 动画
+  --transition-fast: 0.15s cubic-bezier(0, 0, 1, 1);
+  --transition-normal: 0.2s cubic-bezier(0, 0, 1, 1);
+  --transition-slow: 0.3s cubic-bezier(0, 0, 1, 1);
+
+  // Z-index
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-toast: 1080;
+
+  // 卡片和输入框
+  --card-bg: #ffffff;
+  --card-bg-hover: #f7f8fa;
+  --card-border: #e5e6eb;
+  --input-bg: #ffffff;
+  --input-border: #d9d9d9;
+  --input-border-hover: #86909c;
+  --input-border-focus: #165dff;
+}
+
+// 暗色主题 - Arco Design Dark
+[arco-theme="dark"] {
+  --text-primary: #f2f3f5;
+  --text-secondary: #c9cdd4;
+  --text-tertiary: #86909c;
+  --text-disabled: #4e5969;
+  --text-white: #ffffff;
+
+  --bg-primary: #17171a;
+  --bg-secondary: #232324;
+  --bg-tertiary: #2a2a2b;
+  --bg-quaternary: #373739;
+  --bg-overlay: rgba(0, 0, 0, 0.8);
+  --bg-mask: rgba(0, 0, 0, 0.6);
+
+  --border-light: #373739;
+  --border-medium: #4e5969;
+  --border-dark: #6b7785;
+  --border-primary: #165dff;
+
+  --card-bg: #232324;
+  --card-bg-hover: #2a2a2b;
+  --card-border: #373739;
+  --input-bg: #17171a;
+  --input-border: #4e5969;
+  --input-border-hover: #6b7785;
+  --input-border-focus: #165dff;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-large: 0 12px 32px rgba(0, 0, 0, 0.4);
+  --shadow-primary: 0 4px 12px rgba(22, 93, 255, 0.3);
+}
+
+// 响应式
+@media (max-width: 768px) {
+  :root {
+    --font-size-xs: 11px;
+    --font-size-sm: 12px;
+    --font-size-md: 13px;
+    --font-size-lg: 14px;
+    --font-size-xl: 16px;
+    --font-size-2xl: 18px;
+    --font-size-3xl: 20px;
+    --font-size-4xl: 24px;
+
+    --spacing-xs: 2px;
+    --spacing-sm: 4px;
+    --spacing-md: 8px;
+    --spacing-lg: 12px;
+    --spacing-xl: 16px;
+    --spacing-2xl: 24px;
+    --spacing-3xl: 32px;
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --spacing-2xl: 56px;
+    --spacing-3xl: 80px;
+  }
+}
+
+@media (min-width: 1400px) {
+  :root {
+    --font-size-3xl: 28px;
+    --font-size-4xl: 36px;
+  }
+}
