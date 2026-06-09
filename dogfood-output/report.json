@@ -1,0 +1,25 @@
+{
+  "summary": {
+    "HIGH": 1,
+    "MEDIUM": 1,
+    "LOW": 0
+  },
+  "issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "HIGH",
+      "title": "Dashboard action cards missing",
+      "description": "No .action-card elements found on Dashboard",
+      "repro_steps": [],
+      "screenshot": "02-dashboard.png"
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "MEDIUM",
+      "title": "Naive UI class residue found",
+      "description": "Found 36 elements with 'n-' class prefix",
+      "repro_steps": [],
+      "screenshot": "03-gamefeatures.png"
+    }
+  ]
+}
